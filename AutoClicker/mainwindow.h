@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <Windows.h>
+#include <thread>
+#include <QThread>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE

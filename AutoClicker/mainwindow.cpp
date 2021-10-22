@@ -6,6 +6,11 @@
 #include <QLineEdit>
 #include <iostream>
 #include <Windows.h>
+#include <thread>
+#include <QThread>
+#include <QEventLoop>
+#include <QtConcurrent>
+#include <QFuture>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -40,6 +45,7 @@ void MainWindow::pushButton()
 
     while (true)
     {
+        qApp->processEvents();
         if (GetAsyncKeyState('X')) //if X is pressed click = true
         {
             click = true;
@@ -52,7 +58,8 @@ void MainWindow::pushButton()
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-            Sleep(b);
+            Sleep(100);
         }
     }
 }
+
