@@ -33,7 +33,7 @@ void MainWindow::pushButton()
 
 
 
-    double b = textvalue.toDouble();
+    double b = textvalue.toInt();
 
 
     QMessageBox msgBox;
@@ -58,7 +58,7 @@ void MainWindow::pushButton()
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-            Sleep(100);
+            Sleep(b);
         }
     }
 }
