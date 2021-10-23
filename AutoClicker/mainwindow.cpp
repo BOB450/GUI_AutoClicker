@@ -33,9 +33,7 @@ void MainWindow::pushButton()
 
 
 
-    double b = textvalue.toInt();
-
-
+    double b = textvalue.toDouble();
     QMessageBox msgBox;
     msgBox.setText("Set click intervel to: " +  textvalue);
     msgBox.exec();
