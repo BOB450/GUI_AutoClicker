@@ -12,7 +12,8 @@
 #include <QtConcurrent>
 #include <QFuture>
 
-
+bool click = false;
+double b;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -26,24 +27,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::pushButton()
+void autoclick()
 {
-
-  QString  textvalue = ui->lineEdit->displayText();
-
-
-
-    double b = textvalue.toDouble();
-    QMessageBox msgBox;
-    msgBox.setText("Set click intervel to: " +  textvalue);
-    msgBox.exec();
-
-
-    bool click = false; //sets click to false
-
     while (true)
     {
-        qApp->processEvents();
+        //qApp->processEvents();
         if (GetAsyncKeyState('X')) //if X is pressed click = true
         {
             click = true;
@@ -59,5 +47,23 @@ void MainWindow::pushButton()
             Sleep(b);
         }
     }
+}
+
+
+void MainWindow::pushButton()
+{
+
+  QString  textvalue = ui->lineEdit->displayText();
+
+
+
+    double b = textvalue.toDouble();
+    QMessageBox msgBox;
+    msgBox.setText("Set click intervel to: " +  textvalue);
+    msgBox.exec();
+
+
+    click = false; //sets click to false
+   QFuture<void> fu = QtConcurrent::run(autoclick);
 }
 
